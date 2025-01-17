@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, Search, Gavel, Clock, MapPin, DollarSign, ArrowRight } from 'lucide-react';
+import { Building2, Search, Gavel, Clock, MapPin, DollarSign, ArrowRight, Filter, Home, List, HelpCircle, Info, Phone, UserPlus } from 'lucide-react';
 
 function App() {
   const featuredProperties = [
@@ -29,21 +29,45 @@ function App() {
     }
   ];
 
+  const properties = [
+    {
+      id: "1708905",
+      institution: "Canara Bank",
+      type: "Land",
+      city: "Mangalore",
+      auctionDate: "31-01-2025",
+      reservePrice: "540000"
+    },
+    // Add more properties...
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <header className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+      {/* Modified Header/Nav */}
+      <header className="bg-gradient-to-r from-[#0466C8] to-[#0353A4] text-white">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Gavel className="h-8 w-8" />
-            <span className="text-xl font-bold">BankAuctions</span>
+            <span className="text-xl font-bold">myfind.ai</span>
           </div>
-          <div className="space-x-6">
-            <button className="hover:text-blue-200">How It Works</button>
-            <button className="hover:text-blue-200">Properties</button>
-            <button className="hover:text-blue-200">Contact</button>
-            <button className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700">
-              Sign In
+          <div className="flex items-center space-x-6">
+            <button className="flex items-center hover:text-blue-200">
+              <Home className="h-4 w-4 mr-1" /> Home
+            </button>
+            <button className="flex items-center hover:text-blue-200">
+              <List className="h-4 w-4 mr-1" /> Property List
+            </button>
+            <button className="flex items-center hover:text-blue-200">
+              <HelpCircle className="h-4 w-4 mr-1" /> FAQs
+            </button>
+            <button className="flex items-center hover:text-blue-200">
+              <Info className="h-4 w-4 mr-1" /> About Us
+            </button>
+            <button className="flex items-center hover:text-blue-200">
+              <Phone className="h-4 w-4 mr-1" /> Contact Us
+            </button>
+            <button className="bg-[#023E7D] hover:bg-[#002855] px-4 py-2 rounded-lg flex items-center">
+              <UserPlus className="h-4 w-4 mr-1" /> Sign In/Sign Up
             </button>
           </div>
         </nav>
@@ -65,7 +89,7 @@ function App() {
                 className="w-full outline-none text-gray-700"
               />
             </div>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+            <button className="bg-[#023E7D] hover:bg-[#002855] text-white px-6 py-2 rounded-lg">
               Search
             </button>
           </div>
@@ -76,15 +100,15 @@ function App() {
       <section className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-3 gap-8">
           <div className="text-center">
-            <p className="text-4xl font-bold text-blue-900 mb-2">500+</p>
+            <p className="text-4xl font-bold text-[#0466C8] mb-2">500+</p>
             <p className="text-gray-600">Active Listings</p>
           </div>
           <div className="text-center">
-            <p className="text-4xl font-bold text-blue-900 mb-2">₹2.5B+</p>
+            <p className="text-4xl font-bold text-[#0466C8] mb-2">₹2.5B+</p>
             <p className="text-gray-600">Property Value</p>
           </div>
           <div className="text-center">
-            <p className="text-4xl font-bold text-blue-900 mb-2">10k+</p>
+            <p className="text-4xl font-bold text-[#0466C8] mb-2">10k+</p>
             <p className="text-gray-600">Successful Auctions</p>
           </div>
         </div>
@@ -118,7 +142,7 @@ function App() {
                       <span className="text-sm">$</span>{property.basePrice}
                     </p>
                   </div>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
+                  <button className="bg-[#023E7D] hover:bg-[#002855] text-white px-4 py-2 rounded-lg flex items-center">
                     View Details
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </button>
@@ -129,14 +153,86 @@ function App() {
         </div>
       </section>
 
+      {/* New Property Listings Section */}
+      <section className="container mx-auto px-6 py-12">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold">Property Listings</h2>
+            <div className="flex space-x-4">
+              <div className="flex items-center">
+                <Filter className="h-5 w-5 text-gray-400 mr-2" />
+                <select className="border rounded-lg px-3 py-2">
+                  <option>All Cities</option>
+                  <option>Mangalore</option>
+                  <option>Mumbai</option>
+                  {/* Add more cities */}
+                </select>
+              </div>
+              <div className="flex items-center">
+                <select className="border rounded-lg px-3 py-2">
+                  <option>All Property Types</option>
+                  <option>Land</option>
+                  <option>Commercial</option>
+                  <option>Residential</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Property Table */}
+          <div className="overflow-x-auto">
+            <table className="min-w-full">
+              <thead className="bg-[#979DAC]">
+                <tr>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Listing ID</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Institution</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Property Type</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">City</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Auction Date</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Reserve Price</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#7D8597]">
+                {properties.map((property) => (
+                  <tr key={property.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 text-sm text-gray-900">{property.id}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900">{property.institution}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900">{property.type}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900">{property.city}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900">{property.auctionDate}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900">₹{property.reservePrice}</td>
+                    <td className="px-6 py-4 text-sm">
+                      <button className="text-[#0466C8] hover:text-[#0353A4]">View Details</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination */}
+          <div className="flex justify-between items-center mt-6">
+            <p className="text-sm text-gray-600">Showing 1-10 of 100 properties</p>
+            <div className="flex space-x-2">
+              <button className="px-3 py-1 border rounded hover:bg-gray-100">Previous</button>
+              <button className="px-3 py-1 border rounded bg-[#023E7D] text-white hover:bg-[#002855]">1</button>
+              <button className="px-3 py-1 border rounded hover:bg-gray-100">2</button>
+              <button className="px-3 py-1 border rounded hover:bg-gray-100">3</button>
+              <button className="px-3 py-1 border rounded hover:bg-gray-100">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works */}
-      <section className="bg-gray-100 py-16">
+      <section className="bg-[#979DAC] py-16">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="h-8 w-8 text-blue-600" />
+              <div className="bg-[#7D8597] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="h-8 w-8 text-[#0466C8]" />
               </div>
               <h3 className="text-xl font-bold mb-2">Browse Properties</h3>
               <p className="text-gray-600">
@@ -144,8 +240,8 @@ function App() {
               </p>
             </div>
             <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Building2 className="h-8 w-8 text-blue-600" />
+              <div className="bg-[#7D8597] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Building2 className="h-8 w-8 text-[#0466C8]" />
               </div>
               <h3 className="text-xl font-bold mb-2">Place Your Bid</h3>
               <p className="text-gray-600">
@@ -153,8 +249,8 @@ function App() {
               </p>
             </div>
             <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="h-8 w-8 text-blue-600" />
+              <div className="bg-[#7D8597] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="h-8 w-8 text-[#0466C8]" />
               </div>
               <h3 className="text-xl font-bold mb-2">Win & Close</h3>
               <p className="text-gray-600">
@@ -166,7 +262,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-blue-900 text-white py-12">
+      <footer className="bg-[#001233] text-white py-12">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
@@ -174,7 +270,7 @@ function App() {
                 <Gavel className="h-6 w-6" />
                 <span className="text-lg font-bold">BankAuctions</span>
               </div>
-              <p className="text-blue-200">
+              <p className="text-[#979DAC]">
                 Your trusted platform for bank-owned property auctions
               </p>
             </div>
